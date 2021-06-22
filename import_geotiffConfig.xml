@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <AlteryxJavaScriptPlugin>
-  <EngineSettings EngineDll="Python" EngineDllEntryPoint="template.py" SDKVersion="10.1" />
-  <GuiSettings Html="template.html" Icon="template.png" Help="" SDKVersion="10.1">
+  <EngineSettings EngineDll="Python" EngineDllEntryPoint="import_geotiff.py" SDKVersion="10.1" />
+  <GuiSettings Html="import_geotiff.html" Icon="import_geotiff.png" Help="" SDKVersion="10.1">
     <InputConnections>
       <Connection Name="Input" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
     </InputConnections>
@@ -11,8 +11,8 @@
   </GuiSettings>
   <Properties>
     <MetaInfo>
-      <Name>Template</Name>
-      <Description>Template files for quickly building new SDK tools</Description>
+      <Name>Import Geotiff</Name>
+      <Description>Import elevation data from USGS 3DEP elevation geotiffs</Description>
       <CategoryName>Laboratory</CategoryName>
       <SearchTags>python, sdk</SearchTags>
       <ToolVersion>1.00</ToolVersion>
