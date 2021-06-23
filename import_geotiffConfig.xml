@@ -2,9 +2,6 @@
 <AlteryxJavaScriptPlugin>
   <EngineSettings EngineDll="Python" EngineDllEntryPoint="import_geotiff.py" SDKVersion="10.1" />
   <GuiSettings Html="import_geotiff.html" Icon="import_geotiff.png" Help="" SDKVersion="10.1">
-    <InputConnections>
-      <Connection Name="Input" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
-    </InputConnections>
     <OutputConnections>
       <Connection Name="Output" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
     </OutputConnections>
