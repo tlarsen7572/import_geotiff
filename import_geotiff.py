@@ -26,7 +26,6 @@ class AyxPlugin:
 
         self.cell_start = 6
         self.cells_in_axis = 3600
-        self.m_per_lat = 111000
 
     def pi_init(self, str_xml: str):
         xml_parser = Et.fromstring(str_xml)
@@ -98,11 +97,11 @@ class AyxPlugin:
     def create_record_info(self):
         self.OutInfo = Sdk.RecordInfo(self.alteryx_engine)
         self.TopLeft = self.OutInfo.add_field("Top Left", Sdk.FieldType.string, size=8)
-        self.Row = self.OutInfo.add_field("Row", Sdk.FieldType.int64)
-        self.Column = self.OutInfo.add_field("Column", Sdk.FieldType.int64)
-        self.Lon = self.OutInfo.add_field("Lon", Sdk.FieldType.fixeddecimal, size=12, scale=2)
-        self.Lat = self.OutInfo.add_field("Lat", Sdk.FieldType.fixeddecimal, size=12, scale=2)
-        self.Elevation = self.OutInfo.add_field("Elevation", Sdk.FieldType.fixeddecimal, size=12, scale=2)
+        self.Row = self.OutInfo.add_field("Row", Sdk.FieldType.int32)
+        self.Column = self.OutInfo.add_field("Column", Sdk.FieldType.int32)
+        self.Lon = self.OutInfo.add_field("Lon", Sdk.FieldType.double)
+        self.Lat = self.OutInfo.add_field("Lat", Sdk.FieldType.double)
+        self.Elevation = self.OutInfo.add_field("Elevation", Sdk.FieldType.double)
         self.Creator = self.OutInfo.construct_record_creator()
         self.Output.init(self.OutInfo)
 
@@ -110,8 +109,8 @@ class AyxPlugin:
         self.Creator.reset()
         self.Row.set_from_int64(self.Creator, row)
         self.Column.set_from_int64(self.Creator, column)
-        self.Lon.set_from_double(self.Creator, round(lon * self.m_per_lat, 2))
-        self.Lat.set_from_double(self.Creator, round(lat * self.m_per_lat, 2))
-        self.Elevation.set_from_double(self.Creator, round(elevation, 2))
+        self.Lon.set_from_double(self.Creator, lon)
+        self.Lat.set_from_double(self.Creator, lat)
+        self.Elevation.set_from_double(self.Creator, elevation)
         blob = self.Creator.finalize_record()
         self.Output.push_record(blob)
